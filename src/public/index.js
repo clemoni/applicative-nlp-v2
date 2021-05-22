@@ -1,28 +1,27 @@
 import _tool from "fp-dom-tool";
+
 import "./scss/style.scss";
-import _alert from "fp-dom-alert";
-import "fp-dom-alert/lib/index.css";
 
-const axios = require("axios").default;
+import * as fhandler from "./js/formHandler";
 
-const messageContainer = _tool._getElementClass("_message");
-const appendContainer = _tool._appendElement(messageContainer);
-const _switchAlertDisplay = _tool._switchElementDisplay(messageContainer);
-appendContainer(_alert._alertSuccess("All is ready"));
-_switchAlertDisplay();
+const btnsubmit = _tool._getElementClass("form__submit");
 
-const getValue = async (url) => {
-  const res = await axios.get(url);
-  return res;
-};
-
-const submit = _tool._getElementClass("form__submit");
-const input = _tool._getElementID("value");
-submit.addEventListener("click", (e) => {
+btnsubmit.addEventListener("click", (e) => {
   e.preventDefault();
+  fhandler.clearRender();
+  fhandler.clearAlert();
 
-  getValue("/getcontent")
-    .then((res) => res.data)
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
+  const content = _tool._getElementID("content").value;
+
+  fhandler
+    .testFormValue(content) // test is content is empty
+    .then((notEmptyContent) => fhandler.stripFromHtml(notEmptyContent)) //remove potiential html markup
+    .then((plainContent) => fhandler.getValue(plainContent)) // call server > call api
+    .then((response) => fhandler.dispatchAnalysisRes(response.data)) // dispatch data new promise
+    .then((analysis) => fhandler.transformData(analysis)) // change reponse to corresponding explanation
+    .then((convertedAnalysis) => {
+      fhandler.renderTemplate(convertedAnalysis); //render template
+      fhandler.fireSuccess("Text successfully processed."); //success alert
+    })
+    .catch((error) => fhandler.fireAlert(error));
 });

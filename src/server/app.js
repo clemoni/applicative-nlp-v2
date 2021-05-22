@@ -1,30 +1,38 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const callMeaningClound = require("./controller/meaningCloud");
 
 require("colors");
 
+require("dotenv").config({
+  path: path.resolve(__dirname, "../../config/.env"),
+});
+
 const app = express();
 
+const PORT = process.env.PORT || 8082;
+
+// Midleware
 app.use(express.static("dist"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 8080;
-
 app.use(cors());
-
-console.log(path.join(__dirname, "../../dist/index.html"));
 
 app.get("/", (req, res) => {
   path.join(__dirname, "../../dist/index.html");
 });
 
-app.get("/getcontent", (req, res) => {
-  id = { name: "Paul", age: 35 };
-  res.json(id);
-});
+// app.post("/getcontent", (req, res) => {
+//   const { txt } = req.body;
+//   console.log(txt);
+//   id = { name: "Paul", age: 35 };
+//   res.json(id);
+// });
+
+app.post("/getcontent", callMeaningClound);
 
 app.listen(PORT, (error) => {
   try {
