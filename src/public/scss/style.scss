@@ -1,0 +1,92 @@
+// styles.scss
+@import 'fp-dom-alert/lib/index.css';
+@import 'base';
+@import 'nav';
+@import 'footer';
+@import 'result';
+@import 'stat';
+
+.container{
+    
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-template-rows: 1fr, 1fr, 2fr, 2fr, 1.5fr;
+    gap:1rem;
+    grid-template-areas: 
+    "nav"
+    "form"
+    "result"
+    "stat"
+    "footer";
+}
+
+.form{
+    grid-area: form;
+    margin: 0 $global-margin;
+    padding:3rem;
+    background-color: $secondary-bg-color;
+    color:$forth-color;
+    
+    &__label{
+        font-size: 1.4rem;
+    }
+
+    &__submit{
+        background-color: $secondary-color;
+        color:#fff;
+    }
+    textarea{
+      background-color: lighten($secondary-bg-color, 1%);
+      color:$forth-color;
+      border-bottom: 1px solid $forth-color;
+      font-family: $font-main;
+    }
+}
+.result,
+.stat{
+    margin: $global-margin;
+    // padding: 0 1.5rem;
+}
+.result{
+    grid-area: result;
+}
+
+.stat{
+    grid-area: stat;
+}
+
+
+// @media screen and (min-width: 760px), screen and (min-height: 1110px) {}
+@media screen and (min-width: 760px) {
+    .container{
+    
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr, 1fr, 2fr, 1fr;
+        gap:1rem;
+        grid-template-areas: 
+        "nav     nav"
+        "form    form"
+        "result  stat"
+        "footer  footer";
+    }
+}
+
+@media screen and (min-width: 900px) {
+    $global-margin: 3rem;
+        .result,
+        .stat{
+            margin: $global-margin;
+        }
+        .form{
+            margin: 0 $global-margin;
+
+            &__submit{
+                width: 10%;
+                float:right;
+            }
+        }
+        .navbar{
+            margin: 2rem $global-margin 0;
+        }
+}

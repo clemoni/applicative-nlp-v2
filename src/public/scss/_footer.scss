@@ -1,0 +1,50 @@
+.footer{
+    grid-area: footer;
+    padding:3rem;
+    background-color: $secondary-bg-color;
+    color:$forth-color;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+
+
+    &__copyright,
+    &__social{
+        margin:1rem 0;
+    }
+
+    &__social {
+        // width: 40%;
+    .social__list{
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-around;
+
+        li{
+            .fa-github,
+            .fa-linkedin-in{
+                color:$forth-color;
+            }
+            
+        }
+    }
+        
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .footer{
+       flex-direction: row;
+       justify-content: space-between;
+       align-content: center; 
+
+       &__copyright,
+       &__social{
+        margin: 0;
+    }
+       &__social {
+        width: 40%;
+    }
+    }
+}
