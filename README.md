@@ -17,5 +17,6 @@ This project is using two npm package that I created:
 
 ## Run
 
+- Run server: `npm run start`
 - Development mode: `npm run build-dev`
 - Production mode: `npm run build`
