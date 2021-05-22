@@ -18,11 +18,19 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.handlebars$/,
+        loader: "handlebars-loader",
+        options: {
+          helperDirs: path.join(__dirname, "src/public/view/layout"),
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/public/view/index.html",
+      template: "./src/public/view/index.handlebars",
+      title: "Applicative NLP V2",
     }),
   ],
   output: {

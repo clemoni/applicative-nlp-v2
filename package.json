@@ -5,6 +5,7 @@
   "main": "src/public/index.js",
   "scripts": {
     "start": "node src/server/app.js",
+    "sdev": "nodemon src/server/app.js",
     "build": "webpack"
   },
   "repository": {
@@ -29,13 +30,18 @@
     "babel-loader": "^8.2.2",
     "colors": "^1.4.0",
     "dotenv": "^10.0.0",
+    "fp-dom-tool": "^1.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "nodemon": "^2.0.7",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.14.0",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "handlebars-loader": "^1.7.1"
   }
 }

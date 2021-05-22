@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const { red } = require("colorette");
 
 require("colors");
 
@@ -15,10 +14,16 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 8080;
 
 app.use(cors());
+
 console.log(path.join(__dirname, "../../dist/index.html"));
 
 app.get("/", (req, res) => {
   path.join(__dirname, "../../dist/index.html");
+});
+
+app.get("/getcontent", (req, res) => {
+  id = { name: "Paul", age: 35 };
+  res.json(id);
 });
 
 app.listen(PORT, (error) => {
