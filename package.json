@@ -1,0 +1,41 @@
+{
+  "name": "applicative-nlp-v2",
+  "version": "1.0.0",
+  "description": "4th project Udacity Front Web developper Nano Degree",
+  "main": "src/public/index.js",
+  "scripts": {
+    "start": "node src/server/app.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemoni/applicative-nlp-v2.git"
+  },
+  "keywords": [
+    "udacity",
+    "meaningcloud",
+    "nlp"
+  ],
+  "author": "Clemoni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clemoni/applicative-nlp-v2/issues"
+  },
+  "homepage": "https://github.com/clemoni/applicative-nlp-v2#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "html-webpack-plugin": "^5.3.1",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
