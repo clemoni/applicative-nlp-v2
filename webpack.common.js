@@ -1,15 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/public/index.js",
-  mode: "development",
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 8081,
-  },
+
   module: {
     rules: [
       {
@@ -22,31 +17,6 @@ module.exports = {
             plugins: ["@babel/plugin-transform-runtime"],
           },
         },
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader",
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-            },
-          },
-        ],
       },
       {
         test: /\.handlebars$/,
@@ -62,9 +32,10 @@ module.exports = {
       template: "./src/public/view/index.handlebars",
       title: "Applicative NLP V2",
     }),
+    new Dotenv({ path: "./config/.env", systemvars: true }),
   ],
   output: {
-    filename: "main.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
     clean: true,

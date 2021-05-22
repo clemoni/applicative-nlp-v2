@@ -1,6 +1,12 @@
 import _tool from "fp-dom-tool";
 
-import "./scss/style.scss";
+import(/* webpackPreload: true */ "./scss/style.scss");
+import(
+  /* webpackPreload: true */ "@fortawesome/fontawesome-free/js/fontawesome"
+);
+import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/js/solid");
+import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/js/regular");
+import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/js/brands");
 
 import * as fhandler from "./js/formHandler";
 

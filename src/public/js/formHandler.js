@@ -7,15 +7,29 @@ import { fireAlert, fireSuccess, clearAlert } from "./formHandlerHelpers/alert";
 import { renderTemplate, clearRender } from "./formHandlerHelpers/renderData";
 import { transformData } from "./formHandlerHelpers/transformData";
 
+const evaluateUrl = () => {
+  const mode = process.env.NODE_ENV;
+  return mode === "development"
+    ? "http://localhost:8082/getcontent"
+    : "/getcontent";
+};
+
 /**
  * Axios post request to the API
  * @param {*} formdata
  * @returns obj
  */
-const getValue = async (txt) => {
-  const res = await axios.post("http://localhost:8082/getcontent", { txt });
+const getVal = (evaluateUrl) => async (txt) => {
+  const res = await axios.post(evaluateUrl(), { txt });
   return res;
 };
+
+const getValue = getVal(evaluateUrl);
+
+// const getValue = async (txt) => {
+//   const res = await axios.post("http://localhost:8082/getcontent", { txt });
+//   return res;
+// };
 
 /**
  * Split the data between (code, msg) and the analysis of the text
