@@ -25,13 +25,6 @@ app.get("/", (req, res) => {
   path.join(__dirname, "../../dist/index.html");
 });
 
-// app.post("/getcontent", (req, res) => {
-//   const { txt } = req.body;
-//   console.log(txt);
-//   id = { name: "Paul", age: 35 };
-//   res.json(id);
-// });
-
 app.post("/getcontent", callMeaningClound);
 
 app.listen(PORT, (error) => {

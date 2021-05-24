@@ -15,8 +15,11 @@ This project is using two npm package that I created:
 - [fp-dom-tool](https://github.com/clemoni/fp-dom-tool)
 - [fp-dom-alert](https://github.com/clemoni/fp-dom-alert)
 
-## Run
+## How to run the proct
 
-- Run server: `npm run start`
-- Development mode: `npm run build-dev`
-- Production mode: `npm run build`
+1 - Create an `.env` file in the `config` folder. In the `.env` file you should add the
+the API_KEY for the MeaningClound Api.
+
+2 - To run project in mode development: Start express server with `npm run start` and `npm run build-dev`
+
+3 - To run the project in mode production: Start express server with `npm run start` and `npm run build`

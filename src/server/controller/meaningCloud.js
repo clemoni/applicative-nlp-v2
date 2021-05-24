@@ -16,7 +16,6 @@ const meaningCloudReq = {
     txtf: "plain",
   },
   url: `https://api.meaningcloud.com/sentiment-2.1`,
-
   getData: async function () {
     const { params } = this;
     const response = await axios.get(this.url, { params });
