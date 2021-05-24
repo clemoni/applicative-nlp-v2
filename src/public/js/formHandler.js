@@ -9,6 +9,7 @@ import { transformData } from "./formHandlerHelpers/transformData";
 
 const evaluateUrl = () => {
   const mode = process.env.NODE_ENV;
+  console.log(mode);
   return mode === "development"
     ? "http://localhost:8082/getcontent"
     : "/getcontent";
